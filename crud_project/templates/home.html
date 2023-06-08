@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid" >
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" role="alert" style="font-size: 30px;text-align: center;">
+                <b>SIMPLE CRUD OPERATION</b>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <div class="container"  >
+        <div class="row">
+            <div class="col-md-12" >
+                <form method="POST"     class="p-3 shadow">
+                {% csrf_token %}
+                <div class="form-group">
+                    <h6>SL.NO:</h6>
+                    <input type="number" name="slno" class="form-control"  required >
+    
+                </div><br>
+                    <div class="form-group">
+                        <h6>Item Name</h6>
+                        <input type="text" name="name" class="form-control">
+                    </div><br>
+                    <div class="form-group">
+                        <h6>Description</h6>
+                        <input type="text" name="desc" class="form-control" >
+                    </div><br>
+                    <!-- <button type="button" class="btn btn-success">create</button> -->
+                    <input type="submit" class="btn btn-success">
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        
+        <div class="row">
+            <div class="col"><h6>sl.no</h6></div>
+            <div class="col"><h6>Item name></h6></div>
+            <div class="col"><h6>Description</h6></div>
+            <div class="col"><h6>Action</h6></div>
+            <!-- <button type="button" class="btn btn-warning">Update</button> -->
+            <!-- <button type="button" class="btn btn-danger" href="{% url 'delete' i.id %'}">Delete</button></div> -->
+            
+        </div>
+    </div>
+    <div class="container">
+        {% for i in task2 %}
+        <div class="row md-3">
+            <div class="col">
+                {{i.slno}}
+            </div>
+            <div class="col">
+                {{i.name}}
+            </div>
+            <div class="col">
+                {{i.desc}}
+            </div>
+        
+            <div class="col-md">
+                <!-- <button type="button" class="btn btn-warning">Update</button> -->
+                <a type="button" class="btn btn-danger" href="{% url 'delete' i.id %}">Delete</a>
+                <a type="button" class="btn btn-warning" href="{% url 'update' i.id %}">Update</a>
+           
+            </div>
+        </div>
+        {% endfor %}
+               
+   </div>
+   
+
+
+{% endblock %}   
+   
+    
+
+
